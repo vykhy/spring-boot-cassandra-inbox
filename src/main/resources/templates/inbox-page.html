@@ -82,8 +82,22 @@
 
       <main>
         <!-- Main content -->
-        <div th:text="${defaulFolders}"></div>
-        <p>Email content</p>
+        <div class="card" th:if="${emailList}">
+          <div class="card-header">Inbox</div>
+          <div class="list-group">
+            <a
+              th:each="message: ${emailList}"
+              href="#"
+              class="list-group-item list-group-item-action"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text="${message.subject}"></h5>
+                <small th:text="${message.agoTimeString}"></small>
+              </div>
+              <p class="mb-1" th:text="${message.to}">Paragraph</p>
+            </a>
+          </div>
+        </div>
       </main>
 
       <footer>

@@ -62,15 +62,20 @@
 			<artifactId>spring-boot-starter-data-cassandra</artifactId>
 		</dependency>
 		<dependency>
-    <groupId>io.stargate.grpc</groupId>
-    <artifactId>grpc-proto</artifactId>
-    <version>1.0.41</version>
-  </dependency>
-  <dependency>
-    <groupId>io.grpc</groupId>
-    <artifactId>grpc-netty-shaded</artifactId>
-    <version>1.41.0</version>
-  </dependency>
+			<groupId>io.stargate.grpc</groupId>
+			<artifactId>grpc-proto</artifactId>
+			<version>1.0.41</version>
+		</dependency>
+		<dependency>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-netty-shaded</artifactId>
+			<version>1.41.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ocpsoft.prettytime</groupId>
+			<artifactId>prettytime</artifactId>
+			<version>5.0.7.Final</version>
+		</dependency>
 	</dependencies>
 
 	<build>
