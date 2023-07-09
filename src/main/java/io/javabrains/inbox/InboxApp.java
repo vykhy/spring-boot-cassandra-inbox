@@ -10,9 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.datastax.oss.driver.api.core.uuid.Uuids;
@@ -62,7 +59,7 @@ public class InboxApp {
 
 			EmailListItem item = new EmailListItem();
 			item.setKey(key);
-			item.setTo(Arrays.asList("vykhy"));
+			item.setTo(Arrays.asList("vykhy", "john", "damn"));
 			item.setSubject("Subject: " + i);
 			item.setIsUnread(true);
 
