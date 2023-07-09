@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.javabrains</groupId>
-	<artifactId>github-auth-template</artifactId>
+	<artifactId>springboot-cassandra-inbox</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>github-auth-template</name>
 	<description>Demo project for Spring Boot</description>
