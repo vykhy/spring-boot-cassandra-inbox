@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class DataStaxAstraProperties {
 
     private File secureConnectBundle;
-    
+
     public void setSecureConnectBundle(File secureConnectBundle) {
         this.secureConnectBundle = secureConnectBundle;
     }
