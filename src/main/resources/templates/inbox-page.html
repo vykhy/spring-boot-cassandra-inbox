@@ -101,8 +101,9 @@
           <div class="list-group">
             <a
               th:each="message: ${emailList}"
-              th:href="@{'/emails/' + ${message.key.timeUUID}}"
+              th:href="@{'/emails/' + ${message.key.timeUUID}} + '?folder=' + ${folder}"
               class="list-group-item list-group-item-action"
+              th:classappend="${message.isUnread} ? list-group-item-primary"
             >
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1" th:text="${message.subject}"></h5>
