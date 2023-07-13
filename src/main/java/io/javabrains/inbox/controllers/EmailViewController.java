@@ -44,6 +44,7 @@ public class EmailViewController {
         model.addAttribute("userFolders", userFolders);
         List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
         model.addAttribute("defaultFolders", defaultFolders);
+        model.addAttribute("stats", folderService.mapCountToLabels(userId));
 
         // Fetch email
         Optional<Email> optionalEmail = emailRepository.findById(id);
@@ -52,7 +53,7 @@ public class EmailViewController {
             return "inbox-page";
         }
         Email email = optionalEmail.get();
-        String toIds  = String.join(", ", email.getTo());
+        String toIds = String.join(", ", email.getTo());
         model.addAttribute("email", email);
         model.addAttribute("toIds", toIds);
         return "email-page";

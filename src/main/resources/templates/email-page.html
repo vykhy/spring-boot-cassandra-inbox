@@ -72,7 +72,10 @@
           >
             <a th:href="@{'/?folder=' + ${folder.label}}">
               <span th:text="${folder.label}">Label</span>
-              <span class="badge bg-primary rounded-pill">14</span>
+              <span
+                th:text="${stats.get(folder.label)}"
+                class="badge bg-primary rounded-pill"
+              ></span>
             </a>
           </li>
           <li
@@ -81,7 +84,10 @@
           >
             <a th:href="@{'/?folder=' + ${folder.label}}">
               <span th:text="${folder.label}">Label</span>
-              <span class="badge bg-primary rounded-pill">14</span>
+              <span
+                th:text="${stats.get(folder.label)}"
+                class="badge bg-primary rounded-pill"
+              ></span>
             </a>
           </li>
         </ul>

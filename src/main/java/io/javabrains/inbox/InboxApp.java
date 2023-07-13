@@ -12,16 +12,9 @@ import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomi
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.datastax.oss.driver.api.core.uuid.Uuids;
-
-import io.javabrains.inbox.email.Email;
-import io.javabrains.inbox.email.EmailRepository;
-import io.javabrains.inbox.emaillist.EmailListItem;
-import io.javabrains.inbox.emaillist.EmailListItemKey;
-import io.javabrains.inbox.emaillist.EmailListItemRepository;
+import io.javabrains.inbox.email.EmailService;
 import io.javabrains.inbox.folders.Folder;
 import io.javabrains.inbox.folders.FolderRepository;
-import io.javabrains.inbox.folders.UnreadEmailStatsRepository;
 
 @SpringBootApplication
 @RestController
@@ -30,11 +23,7 @@ public class InboxApp {
 	@Autowired
 	FolderRepository folderRepository;
 	@Autowired
-	EmailListItemRepository emailListItemRepository;
-	@Autowired
-	EmailRepository emailRepository;
-	@Autowired
-	UnreadEmailStatsRepository unreadEmailStatsRepository;
+	EmailService emailService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(InboxApp.class, args);
@@ -54,33 +43,9 @@ public class InboxApp {
 		folderRepository.save(new Folder("vykhy", "Sent", "Green"));
 		folderRepository.save(new Folder("vykhy", "Spam", "red"));
 
-		unreadEmailStatsRepository.incrementUnreadCounter("vykhy", "Inbox");
-		unreadEmailStatsRepository.incrementUnreadCounter("vykhy", "Inbox");
-		unreadEmailStatsRepository.incrementUnreadCounter("vykhy", "Inbox");
-		unreadEmailStatsRepository.incrementUnreadCounter("vykhy", "Inbox");
-
 		for (int i = 0; i < 10; i++) {
-			EmailListItemKey key = new EmailListItemKey();
-			key.setId("vykhy");
-			key.setLabel("Inbox");
-			key.setTimeUUID(Uuids.timeBased());
-
-			EmailListItem item = new EmailListItem();
-			item.setKey(key);
-			item.setTo(Arrays.asList("vykhy", "john", "damn"));
-			item.setSubject("Subject: " + i);
-			item.setIsUnread(true);
-
-			emailListItemRepository.save(item);
-
-			Email email = new Email();
-			email.setId(key.getTimeUUID());
-			email.setFrom("vykhy");
-			email.setTo(item.getTo());
-			email.setSubject("Subject: " + i);
-			email.setBody("Body " + i);
-			emailRepository.save(email);
-
+			emailService.sendEmail("vykhy", Arrays.asList("vykhy", "abc"), "Hello John " + i,
+					"This is John number " + i + ".");
 		}
 
 	}
